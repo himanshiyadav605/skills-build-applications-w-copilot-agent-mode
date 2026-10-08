@@ -1,0 +1,23 @@
+.app-shell {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.brand-logo {
+  object-fit: contain;
+  border-radius: 0.25rem;
+}
+
+.navbar-nav .nav-link.active {
+  color: #fff;
+  font-weight: 600;
+}
+
+main h1 {
+  color: #212529;
+}
+
+td {
+  min-width: 7rem;
+}
