@@ -1,7 +1,7 @@
 import useResource from '../hooks/useResource.js'
 
-export default function ResourceTable({ columns, description, endpoint, title }) {
-  const { items, loading, error } = useResource(endpoint)
+export default function ResourceTable({ columns, description, endpoint, fetcher, title }) {
+  const { items, loading, error } = useResource(endpoint, fetcher)
 
   return (
     <section>

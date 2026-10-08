@@ -1,3 +1,4 @@
+import { fetchCollection as fetch } from '../api.js'
 import ResourceTable from './ResourceTable.jsx'
 
 const columns = [
@@ -18,6 +19,7 @@ export default function Workouts() {
       columns={columns}
       description="Find a guided session that fits your training goals."
       endpoint="/api/workouts/"
+      fetcher={fetch}
       title="Workouts"
     />
   )

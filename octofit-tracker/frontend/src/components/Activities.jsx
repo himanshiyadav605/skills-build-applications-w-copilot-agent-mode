@@ -1,3 +1,4 @@
+import { fetchCollection as fetch } from '../api.js'
 import ResourceTable from './ResourceTable.jsx'
 
 const columns = [
@@ -22,6 +23,7 @@ export default function Activities() {
       columns={columns}
       description="Recent training sessions logged by the community."
       endpoint="/api/activities/"
+      fetcher={fetch}
       title="Activities"
     />
   )

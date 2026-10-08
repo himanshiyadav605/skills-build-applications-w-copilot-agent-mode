@@ -1,3 +1,4 @@
+import { fetchCollection as fetch } from '../api.js'
 import ResourceTable from './ResourceTable.jsx'
 
 const columns = [
@@ -21,6 +22,7 @@ export default function Leaderboard() {
       columns={columns}
       description="See how individual and team efforts rank."
       endpoint="/api/leaderboard/"
+      fetcher={fetch}
       title="Leaderboard"
     />
   )

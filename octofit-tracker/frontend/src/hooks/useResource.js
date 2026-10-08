@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { fetchCollection } from '../api.js'
 
-export default function useResource(endpoint) {
+export default function useResource(endpoint, fetcher = fetchCollection) {
   const [resource, setResource] = useState(() => ({
     endpoint,
     items: [],
@@ -12,7 +12,14 @@ export default function useResource(endpoint) {
   useEffect(() => {
     const controller = new AbortController()
 
-    fetchCollection(endpoint, controller.signal)
+    Promise.resolve()
+      .then(() => {
+        if (controller.signal.aborted) {
+          return
+        }
+
+        return fetcher(endpoint, controller.signal)
+      })
       .then((items) => {
         if (!controller.signal.aborted) {
           setResource({ endpoint, items, loading: false, error: '' })
@@ -30,7 +37,7 @@ export default function useResource(endpoint) {
       })
 
     return () => controller.abort()
-  }, [endpoint])
+  }, [endpoint, fetcher])
 
   return {
     items: resource.items,
